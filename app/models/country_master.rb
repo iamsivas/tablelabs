@@ -1,0 +1,2 @@
+class CountryMaster < ApplicationRecord
+end

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		tbody {
+	    display:block;
+	    height:400px;
+	    overflow:auto;
+		}
+		thead, tbody tr {
+	    display:table;
+	    width:100%;
+	    table-layout:fixed;
+		}
+		thead {
+		  width: calc( 100% - 1em )
+		}
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('ul.nav li.nav-item.edown').addClass('active');
+		});
+	</script>
+</head>
+
+<body>
+	<div class="main-panel">
+		<div class="content">
+			<div class="container-fluid">
+				<h4 class="page-title">Stored Files</h4>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">List of Files</div>
+							</div>
+
+							<div class="card-body">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>S.No</th>
+											<th>Date</th>
+											<th>File Name</th>
+											<th>Download</th>
+										</tr>
+									</thead>
+
+									<%if @files%>
+										<tbody>
+											<%i = 1%>
+											<%@files.each do |f|%>
+												<tr>
+													<td class="aligncen"><%= i %></td>
+													<td class="aligncen"><%= f.create_date.strftime('%d-%m-%Y') %></td>
+													<td class="aligncen"><%= f.file_name %></td>
+													<td class="aligncen"><a href="/file/<%= f.id %>?empid=<%= session[:user]['empid'] %>"><i class="fa fa-download"></i> </a></td>
+												</tr>
+												<% i += 1%>
+											<%end%>
+										</tbody>
+									<%else%>
+									<%end%>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

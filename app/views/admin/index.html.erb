@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('ul.nav li.nav-item.home').addClass('active');
+		});
+	</script>
+</head>
+
+<body>
+	<div class="main-panel">
+		<div class="content">
+			<div class="container-fluid">
+				<h4 class="page-title">Dashboard</h4>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="card card-stats card-warning">
+							<div class="card-body ">
+								<div class="row">
+									<div class="col-5">
+										<div class="icon-big text-center">
+											<i class="fa fa-users"></i>
+										</div>
+									</div>
+									<div class="col-7 d-flex align-items-center">
+										<div class="numbers">
+											<p class="card-category">Contact Us</p>
+											<h4 class="card-title"><%= @contacts.count %></h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="card card-stats card-info">
+							<div class="card-body ">
+								<div class="row">
+									<div class="col-5">
+										<div class="icon-big text-center">
+											<i class="fa fa-users"></i>
+										</div>
+									</div>
+									<div class="col-7 d-flex align-items-center">
+										<div class="numbers">
+											<p class="card-category">Job Applied</p>
+											<h4 class="card-title"><%= @careers.count %></h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="card card-stats card-danger">
+							<div class="card-body ">
+								<div class="row">
+									<div class="col-5">
+										<div class="icon-big text-center">
+											<i class="fa fa-users"></i>
+										</div>
+									</div>
+									<div class="col-7 d-flex align-items-center">
+										<div class="numbers">
+											<p class="card-category">Total Employees</p>
+											<h4 class="card-title"><%= @employees.count %></h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="card card-stats card-primary">
+							<div class="card-body ">
+								<div class="row">
+									<div class="col-5">
+										<div class="icon-big text-center">
+											<i class="fa fa-users"></i>
+										</div>
+									</div>
+									<div class="col-7 d-flex align-items-center">
+										<div class="numbers">
+											<p class="card-category">Today Presents</p>
+											<h4 class="card-title">1,294</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card card-tasks">
+							<div class="card-header ">
+								<h4 class="card-title">Job Applications</h4>
+							</div>
+							<div class="card-body">
+								<div class="table-full-width">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>
+													<input type="checkbox" name="">
+												</th>
+												<th>Name</th>
+												<th>Email</th>
+												<th>Phone Number</th>
+												<th>Position</th>
+												<th>Profile</th>
+												<th>Delete</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<% if @careers %>
+												<% @careers.each do |c| %>
+													<tr class="text-center">
+														<td><input type="checkbox" name=""></td>
+														<td><%= c.name %></td>
+														<td><%= c.email %></td>
+														<td><%= c.phone_no %></td>
+														<td><%= Career.find(c.applied_for).name %></td>
+														<td><a href="<%= c.resume_link %>" data-toggle="tooltip" title="View Profile" target="_blank"><i class="fa fa-eye"></i></a></td>
+														<td class="td-actions">
+															<div class="form-button-action">
+																<button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
+																	<i class="fa fa-times"></i>
+																</button>
+															</div>
+														</td>
+													</tr>
+												<% end %>
+												
+											<% else %>
+											<% end %>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

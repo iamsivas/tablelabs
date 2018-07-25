@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+
+<body>
+	<div class="sidebar">
+		<div class="scrollbar-inner sidebar-wrapper">
+			<div class="user">
+				<div class="photo"><img src="assets/profile.png"></div>
+				<div class="info">
+					<a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+						<span>
+							<%= session[:user]["name"] %>
+							<span class="user-level">Employee ID : <%= session[:user]["empid"] %></span>
+						</span>
+					</a>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<ul class="nav">
+				<li class="nav-item"><a href="/employee"><i class="fa fa-dashboard"></i><p>Dashboard</p></a></li>
+				<li class="nav-item"><a href="/emp_pro"><i class="fa fa-user-o"></i><p>My Profile</p></a></li>
+				<li class="nav-item active"><a href="/emp_log"><i class="fa fa-table"></i><p>Login Details</p></a></li>
+				<li class="nav-item"><a href="#"><i class="fa fa-envelope-o"></i><p>Leave Request</p></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="main-panel">
+		
+	</div>
+</body>
+</html>

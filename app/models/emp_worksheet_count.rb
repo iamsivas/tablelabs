@@ -1,0 +1,2 @@
+class EmpWorksheetCount < ApplicationRecord
+end

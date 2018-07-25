@@ -1,0 +1,2 @@
+class VillageMaster < ApplicationRecord
+end

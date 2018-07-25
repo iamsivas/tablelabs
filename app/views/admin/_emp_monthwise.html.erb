@@ -1,0 +1,37 @@
+<div class="table-responsive">
+	<table class="table table-hover table-bordered">
+		<thead>
+			<th>S.No</th>
+			<th>Month</th>
+			<th>Line Count</th>
+			<th>Page Count</th>
+			<th>Total Cost</th>
+		</thead>
+
+		<%if !@monthwise.empty?%>
+			<tbody>
+				<% s = 1 %>
+				<% @monthwise.each do |m| %>
+					<tr>
+						<td class="aligncen"><%= s %></td>
+						<td class="aligncen"><%= m[0].strftime('%B-%Y') %></td>
+						<td class="aligncen"><%= m[1][0].line_count %></td>
+						<td class="aligncen"><%= m[1][0].page_count %></td>
+						<% p = BigDecimal(m[1][0].line_count) %>
+						<% cost = p / 4000 %>
+						<td class="aligncen"><%=  cost.to_f %></td>
+					</tr>
+					<%s += 1%>
+				<%end%>
+			</tbody>
+		<%else%>
+			<tbody>
+				<tr style="color:#E25336;height:180px;">
+					<td colspan="7" class="aligncen">
+						<b><i class="fa fa-warning" style="color:#E25336;"></i>&emsp;No Records found!</b>
+					</td>
+				</tr>
+			</tbody>
+		<%end%>
+	</table>
+</div>

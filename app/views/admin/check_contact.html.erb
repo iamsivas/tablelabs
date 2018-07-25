@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+
+<body>
+	<div class="main-panel">
+		<div class="content">
+			<div class="container-fluid">
+				<h4 class="page-title">Mailbox</h4>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card card-tasks">
+							<div class="card-header ">
+								<h4 class="card-title">Contact Us Mail</h4>
+							</div>
+							<div class="card-body">
+								<div class="table-full-width">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>
+													<input type="checkbox" name="">
+												</th>
+												<th>Name</th>
+												<th>Message</th>
+												<th>Date</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<% if @contacts %>
+												<% @contacts.each do |c| %>
+													<tr>
+														<td><input type="checkbox" name=""></td>
+														<td><%= c.name %></td>
+														<td><%= c.message %></td>
+														<td><%= c.contact_date.strftime('%d-%m-%Y') %></td>
+														<td class="td-actions text-right">
+															<div class="form-button-action">
+																<button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
+																	<i class="fa fa-edit"></i>
+																</button>
+																<button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
+																	<i class="fa fa-times"></i>
+																</button>
+															</div>
+														</td>
+													</tr>
+												<% end %>
+												
+											<% else %>
+											<% end %>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

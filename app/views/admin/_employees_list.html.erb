@@ -1,0 +1,69 @@
+<table class="table table-hover table-bordered">
+	<thead>
+		<th>S.No</th>
+		<th>Employee ID</th>
+		<th>Name</th>
+		<th>Email</th>
+		<th>Deactive</th>
+		<th>Work Status</th>
+		<th>Online</th>
+		<th>View</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</thead>
+
+	<% if !@employees.empty? %>
+		<tbody id="myTable">
+			<% i = 1 %>
+			<% @employees.each do |emp| %>
+				<% if emp.deactive == 1 %>
+					<tr style="color: red;">
+				<% else %>
+					<tr>
+				<% end %>
+					<td class="aligncen"><%= i %></td>
+					<td class="aligncen"><%= emp.empid %></td>
+					<td><%= emp.name %></td>
+					<td><%= emp.email %></td>
+					<td class="aligncen">
+						<% if emp.deactive == 0 %>
+							<input type="checkbox" value="active" data-toggle="tooltip" title="Deactive" onclick="deactive(<%= emp.id %>, 1)">
+						<% elsif emp.deactive == 1 %>
+							<input type="checkbox" value="deactive" data-toggle="tooltip" title="Active" onclick="deactive(<%= emp.id %>, 0)" checked>
+						<% end %>
+					</td>
+					<td class="aligncen">
+						<a href="/empws/<%= emp.id %>" data-toggle="tooltip" title="View Work Status"><i class="fa fa-link"></i></a>
+					</td>
+					<td class="aligncen">
+						<div class="empimg">
+							<% if emp.current_status == 1 %>
+								<img src="/assets/online-icon.png" data-toggle="tooltip" title="Online">
+							<% else %>
+								<img src="/assets/offline-icon.png" data-toggle="tooltip" title="Offline">
+							<% end %>
+						</div>
+					</td>
+					<td class="aligncen">
+						<a href="/ve/<%= emp.id %>" data-toggle="tooltip" title="View" data-remote="true"><i class="fa fa-eye"></i></a>
+					</td>
+					<td class="aligncen">
+						<a href="/eepd/<%= emp.id %>" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+					</td>
+					<td class="aligncen">
+						<a href="javascript:void()" data-toggle="tooltip" title="Remove" onclick="deleteemp(<%= emp.id %>)"><i class="fa fa-trash-o"></i></a>
+					</td>
+				</tr>
+				<% i += 1%>
+			<% end %>
+		</tbody>
+	<% else %>
+		<tbody>
+			<tr style="color:#E25336;">
+				<td colspan="10" class="aligncen">
+					<b><i class="fa fa-warning" style="color:#E25336;"></i>&emsp;No Employees found!</b>
+				</td>
+			</tr>
+		</tbody>
+	<% end %>
+</table>

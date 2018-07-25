@@ -1,0 +1,69 @@
+<div class="table-responsive">
+	<table class="table table-hover table-bordered">
+		<thead>
+			<th>S.No</th>
+			<th>Date</th>
+			<th>Max Hour</th>
+			<th>Start Time</th>
+			<th>End Time</th>
+			<th>Line Count</th>
+			<th>Page Count</th>
+		</thead>
+		
+		<% if !@logwise.empty? %>
+			<tbody>
+				<% s = 1 %>
+				<% @logwise.each do |l| %>
+					<tr>
+						<td class="aligncen"><%= s %></td>
+						<td><%= l.date.strftime('%d-%m-%Y') %></td>
+						<% tin = l.intime %>
+						<%if !l.outtime.nil?%>
+							<% tout = l.outtime %>
+						<%else%>
+							<% tout = Time.now %>
+						<%end%>
+						<% time = tout - tin %>
+						<td class="aligncen">
+							<%= Time.at(time).utc.strftime("%H:%M:%S") %>
+						</td>
+						<td>
+							<%= l.intime.strftime('%H:%M:%S') %>
+						</td>
+						<td>
+							<% if !l.outtime.nil? %>
+								<%= l.outtime.strftime('%H:%M:%S') %>
+							<% else %>
+								--
+							<% end %>
+						</td>
+						<% @lcount = EmpWorksheetCount.where(logid: l.id)
+						@linearr = []
+						@pagearr = []
+						@lcount.each do |lc|
+							@linearr.push(lc.line_count)
+							@pagearr.push(lc.page_count)
+						end
+						@linesum = @linearr.inject(0){|sum,x| sum + x }
+						@pagesum = @pagearr.inject(0){|sum,x| sum + x }%>
+						<td class="aligncen">
+							<%= @linesum %>
+						</td>
+						<td class="aligncen">
+							<%= @pagesum %>
+						</td>
+					</tr>
+					<% s += 1 %>
+				<% end %>
+			</tbody>
+		<% else %>
+			<tbody>
+				<tr style="color:#E25336;height:180px;">
+					<td colspan="7" class="aligncen">
+						<b><i class="fa fa-warning" style="color:#E25336;"></i>&emsp;No Records found!</b>
+					</td>
+				</tr>
+			</tbody>
+		<% end %>	
+	</table>
+</div>

@@ -1,0 +1,2 @@
+class EmpDaywise < ApplicationRecord
+end

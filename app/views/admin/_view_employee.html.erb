@@ -1,0 +1,66 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+			</div>
+
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<table class="table table-hover">
+							<tr>
+								<td>Employee ID</td>
+								<td>:&emsp;<%= @emp.empid %></td>
+							</tr>
+							<tr>
+								<td>Name</td>
+								<td>:&emsp;<%= @emp.name %></td>
+							</tr>
+							<tr>
+								<td>Email</td>
+								<td>:&emsp;<%= @emp.email %></td>
+							</tr>
+							<tr>
+								<td>Phone Number</td>
+								<td>:&emsp;<%= @empdetail.phone_no %></td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td>:&emsp;<%= @empdetail.door_no %>, <%= @empdetail.street %>, <%= @empdetail.village %>, <%= @empdetail.city %> - <%= @empdetail.pincode %></td>
+							</tr>
+							<tr>
+								<td>Educational Qualification</td>
+								<td>:&emsp;<%= QualificationMaster.find(@empdetail.qualification).name %></td>
+							</tr>
+							<tr>
+								<td>Department</td>
+								<td>:&emsp;<%= DepartmentMaster.find(@empdetail.department).name %></td>
+							</tr>
+							<tr>
+								<td>Years of Experience</td>
+								<td>:&emsp;<%= @empdetail.experience %></td>
+							</tr>
+							<tr>
+								<td>Date of Birth</td>
+								<td>:&emsp;<%= @empdetail.birth_date.strftime('%d-%b-%Y') %></td>
+							</tr>
+							<tr>
+								<td>Bank Account Number</td>
+								<td>:&emsp;<%= @empdetail.bank_acc_no %></td>
+							</tr>
+							<tr>
+								<td>Bank IFSC Code</td>
+								<td>:&emsp;<%= @empdetail.bank_ifsc %></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

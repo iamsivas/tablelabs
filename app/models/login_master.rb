@@ -1,0 +1,2 @@
+class LoginMaster < ApplicationRecord
+end

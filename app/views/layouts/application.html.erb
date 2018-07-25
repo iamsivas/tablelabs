@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="/assets/favicon.png" />
+    <title>Tablelabs (OPC) Pvt Ltd</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" type="text/css" href="/assets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/ready.css">
+    <link rel="stylesheet" type="text/css" href="/assets/demo.css">
+    <link rel="stylesheet" type="text/css" href="/assets/bootstrap-datepicker3.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/> -->
+
+    <link rel="stylesheet" href="assets/sweetalert.css" rel="stylesheet" />
+    <script type="text/javascript" src="assets/sweetalert.min.js"></script>
+  </head>
+
+  <body onbeforeunload="ConfirmClose()" onunload="HandleOnClose()">
+    <% flash.each do |key, value| %>
+      <script type="text/javascript">
+        toastr.<%= key %>('<%= value%>!', '<%= key.capitalize %>')
+      </script>
+    <% end %>
+    <div class="wrapper">
+      <% if session[:user]%>
+        <% if session[:user]['role'] == 1 %>
+          <div class="sidebar">
+            <div class="scrollbar-inner sidebar-wrapper">
+              <ul class="nav">
+                <li class="nav-item home">
+                  <a href="/" data-toggle="tooltip" title="Dashboard"><i class="fa fa-dashboard"></i></a>
+                </li>
+                <li class="nav-item emps">
+                  <a href="/emps" data-toggle="tooltip" title="Employees"><i class="fa fa-users"></i></a>
+                </li>
+                <li class="nav-item cares">
+                  <a href="/careers" data-toggle="tooltip" title="Careers"><i class="fa fa-inbox"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a href="/signout" data-toggle="tooltip" title="Log Out"><i class="fa fa-power-off"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <% elsif session[:user]['role'] == 2 %>
+          <div class="sidebar">
+            <div class="scrollbar-inner sidebar-wrapper">
+              <ul class="nav">
+                <li class="nav-item ehome">
+                  <a href="/employee" data-toggle="tooltip" title="Dashboard"><i class="fa fa-dashboard"></i></a>
+                </li>
+                <li class="nav-item eprof">
+                  <a href="/emp_pro" data-toggle="tooltip" title="Profile"><i class="fa fa-user-o"></i></a>
+                </li>
+                <li class="nav-item edown">
+                  <a href="/emp_data" data-toggle="tooltip" title="View Stored Files"><i class="fa fa-download"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a href="/signout" data-toggle="tooltip" title="Log Out"><i class="fa fa-power-off"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      <%else%>
+        <div class="main-header">
+          <div class="logo-header">
+            <a href="/" class="logo"><img src="/assets/logo.png"></a>
+          </div>
+        </div>
+        <div class="sidebar">
+          <div class="scrollbar-inner sidebar-wrapper">
+            <ul class="nav">
+              <li style="margin-top:5em;">&emsp;</li>
+              <li class="nav-item signin">
+                <a href="/signin" data-toggle="tooltip" title="Sign In"><i class="fa fa-sign-in"></i></a>
+              </li>
+              <li class="nav-item signup">
+                <a href="/signup" data-toggle="tooltip" title="Sign Up"><i class="fa fa-user-plus"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      <%end%>
+      <%= yield %>
+    </div>
+  </body>
+  <script src="assets/ready.min.js"></script>
+  <script src="assets/demo.js"></script>
+  <script src="assets/jquery.3.2.1.min.js"></script>
+  <script src="assets/popper.min.js"></script>
+  <script src="assets/bootstrap.min.js"></script>
+</html>

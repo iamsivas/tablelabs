@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		tbody {
+	    display:block;
+	    height:200px;
+	    overflow:auto;
+		}
+		thead, tbody tr {
+	    display:table;
+	    width:100%;
+	    table-layout:fixed;
+		}
+		thead {
+		  width: calc( 100% - 1em )
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('ul.nav li.nav-item.emps').addClass('active');
+		});
+	</script>
+</head>
+
+<body>
+	<div class="main-panel">
+		<div class="content">
+			<div class="container-fluid">
+				<h5 class="page-title"><span style="color:#E25336;"><%= @user.empid %></span> - Work Status</h5>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header"><div class="card-title">Logwise</div></div>
+							<div class="card-body">
+								<%= render "emp_loginwise" %>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header"><div class="card-title">Daywise</div></div>
+							<div>
+								<%= render "emp_daywise" %>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header"><div class="card-title">Monthwise</div></div>
+							<div>
+								<%= render "emp_monthwise" %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

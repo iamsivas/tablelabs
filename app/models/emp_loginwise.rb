@@ -1,0 +1,2 @@
+class EmpLoginwise < ApplicationRecord
+end

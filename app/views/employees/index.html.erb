@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('ul.nav li.nav-item.ehome').addClass('active');
+		});
+	</script>
+</head>
+
+<body>
+	<div class="main-panel">
+		<div class="content">
+			<div class="container-fluid">
+				<div class="card">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+								<select class="form-control" id="entcat" name="entcat">
+									<option value="0">Select Entry Category</option>
+									<option value="1">Plain Text</option>
+									<option value="2">Excel Sheet</option>
+									<option value="3">PDF Converter</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3 pull-left">
+							<div class="form-group">
+								<span style="color:#E25336;">* Please select any option to address entry</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="partialview">
+					<div id="textplain"><%= render 'plaintext' %></div>
+					<div id="xlssheet"><%= render 'excelformat' %></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#textplain").hide();
+		$("#xlssheet").hide();
+		$('#addform').attr("disabled", true);
+	});
+</script>
+</html>

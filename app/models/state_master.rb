@@ -1,0 +1,2 @@
+class StateMaster < ApplicationRecord
+end

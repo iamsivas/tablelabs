@@ -1,0 +1,2 @@
+class EmpFilepath < ApplicationRecord
+end

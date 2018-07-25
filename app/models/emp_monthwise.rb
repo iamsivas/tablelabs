@@ -1,0 +1,2 @@
+class EmpMonthwise < ApplicationRecord
+end

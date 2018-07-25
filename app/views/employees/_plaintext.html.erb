@@ -1,0 +1,49 @@
+<%= form_tag addresstext_path do %>
+	<div class="card">
+		<div class="row">
+			<div class="col">
+				<%= render 'country_list' %>
+			</div>
+			<div class="col">
+				<%= render 'state_list' %>
+			</div>
+			<div class="col">
+				<%= render 'district_list' %>
+			</div>
+			<div class="col">
+				<%= render 'taluk_list' %>
+			</div>
+			<div class="col">
+				<%= render 'pincode_list' %>
+			</div>
+			<div class="col">
+				<%= render 'village_list' %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<%= render "category_list" %>
+			</div>
+			<div class="col">
+				<%= render "subcatgory_list" %>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<textarea name="address" rows="25" class="form-control" id="addressentry" autocomplete="false" required></textarea>
+				</div>								
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+	        <input type="submit" value="Submit" class="btn btn-app pull-right addform">
+	      </div>
+				<div style="margin-bottom: 3em;"></div>
+			</div>
+		</div>
+	</div>
+<% end %>

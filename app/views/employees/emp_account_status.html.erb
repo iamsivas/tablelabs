@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+
+<body>
+	<div class="sidebar">
+		<div class="scrollbar-inner sidebar-wrapper">
+			<div class="user">
+				<div class="photo"><img src="assets/profile.png"></div>
+				<div class="info">
+					<a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+						<span>
+							<%= session[:user]["name"] %>
+							<span class="user-level">Employee ID : <%= session[:user]["empid"] %></span>
+						</span>
+					</a>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<ul class="nav">
+				<li class="nav-item"><a href="/employee"><i class="fa fa-dashboard"></i><p>Dashboard</p></a></li>
+				<li class="nav-item active"><a href="/emp_pro"><i class="fa fa-user-o"></i><p>My Profile</p></a></li>
+				<li class="nav-item"><a href="/emp_log"><i class="fa fa-table"></i><p>Login Details</p></a></li>
+				<li class="nav-item"><a href="#"><i class="fa fa-envelope-o"></i><p>Leave Request</p></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="main-panel">
+		<div class="content">
+			<div class="container-fluid">
+				<h4 class="page-title">Employee Accounts</h4>
+				<div class="row">
+					<div class="col-md-9">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Account Settings</div>
+							</div>
+							<div class="card-body">
+								<table class="table table-hover">
+									<tbody>
+										<tr>
+											<td><label><b>Employee ID</b></label></td>
+											<td>:&emsp;<%= @user.empid %></td>
+										</tr>
+										<tr>
+											<td><label><b>Name</b></label></td>
+											<td>:&emsp;<%= @user.name %></td>
+										</tr>
+										<tr>
+											<td><label><b>Email</b></label></td>
+											<td>:&emsp;<%= @user.email %></td>
+										</tr>
+										<tr>
+											<td><label><b>Phone Number</b></label></td>
+											<td>:&emsp;<%= EmployeeProfile.find_by(:userid=>@user.id).phone_no %></td>
+										</tr>
+										<tr>
+											<td><label><b>Account Status</b></label></td>
+											<td>:&emsp;<span style="color:green;">Active</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

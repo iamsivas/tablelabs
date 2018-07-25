@@ -1,0 +1,70 @@
+<%= form_tag addressrows_path do %>
+	<div class="card">
+		<div class="row">
+			<div class="col">
+				<%= render 'country_list' %>
+			</div>
+			<div class="col">
+				<%= render 'state_list' %>
+			</div>
+			<div class="col">
+				<%= render 'district_list' %>
+			</div>
+			<div class="col">
+				<%= render 'taluk_list' %>
+			</div>
+			<div class="col">
+				<%= render 'pincode_list' %>
+			</div>
+			<div class="col">
+				<%= render 'village_list' %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<%= render "category_list" %>
+			</div>
+			<div class="col">
+				<%= render "subcatgory_list" %>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Address</th>
+								<th>Phone Number</th>
+								<th>Website</th>
+								<th>Land mark</th>
+							</tr>
+						</thead>
+						<tbody style="max-height: 300px;">
+							<% for i in 1..10 do %>
+								<tr>
+									<td><input type="text" name="name_<%=i%>" class="form-control caplet" placeholder="Name" required></td>
+									<td><input type="text" name="address_<%=i%>" class="form-control" placeholder="Address" required></td>
+									<td><input type="text" name="phone_<%=i%>" class="form-control numeric" placeholder="Phone Number" required></td>
+									<td><input type="text" name="website_<%=i%>" class="form-control" placeholder="Website" required></td>
+									<td><input type="text" name="landmark_<%=i%>" class="form-control" placeholder="Landmark" required></td>
+								</tr>
+							<%end%>
+						</tbody>
+					</table>
+				</div>								
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+	        <input type="submit" value="Submit" class="btn btn-app pull-right addform">
+	      </div>
+				<div style="margin-bottom: 3em;"></div>
+			</div>
+		</div>
+	</div>
+<% end %>

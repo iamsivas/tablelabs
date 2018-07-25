@@ -1,0 +1,2 @@
+class TalukMaster < ApplicationRecord
+end

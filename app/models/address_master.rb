@@ -1,0 +1,2 @@
+class AddressMaster < ApplicationRecord
+end

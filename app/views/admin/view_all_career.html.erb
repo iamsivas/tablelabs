@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		tbody {
+	    display:block;
+	    height:400px;
+	    overflow:auto;
+		}
+		thead, tbody tr {
+	    display:table;
+	    width:100%;
+	    table-layout:fixed;
+		}
+		thead {
+		  width: calc( 100% - 1em )
+		}
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('ul.nav li.nav-item.cares').addClass('active');
+		});
+	</script>
+</head>
+
+<body>
+	<div class="main-panel">
+		<div class="content">
+			<div class="container-fluid">
+				<h5 class="page-title">Careers</h5>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Career List</div>
+							</div>
+							<div class="card-body">
+								<table class="table table-hover table-bordered">
+									<thead>
+										<th>S.No</th>
+										<th>Name</th>
+										<th>Description</th>
+										<th>View</th>
+										<th>Edit</th>
+										<th>Delete</th>
+									</thead>
+
+									<% if @careers %>
+										<tbody>
+											<% i = 1 %>
+											<% @careers.each do |c| %>
+												<tr>
+													<td class="aligncen"><%= i %></td>
+													<td><%= c.name %></td>
+													<td><%= c.description %></td>
+													<td class="aligncen"><a href="/ec/<%= c.id %>?view=1"><i class="fa fa-eye"></i></a></td>
+													<td class="aligncen"><a href="/ec/<%= c.id %>?edit=1"><i class="fa fa-edit"></i></a></td>
+													<td class="aligncen"><a href="/dc/<%= c.id %>"><i class="fa fa-trash-o"></i></a></td>
+												</tr>
+												<% i += 1 %>
+											<% end %>
+										</tbody>
+									<% else %>
+									<% end %>
+								</table>
+							</div>
+
+							<div class="card-footer">
+								<a href="/nc" class="btn btn-app pull-right">Add New Position</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

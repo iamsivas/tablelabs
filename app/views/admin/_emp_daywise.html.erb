@@ -1,0 +1,40 @@
+<div class="table-responsive">
+	<table class="table table-hover table-bordered">
+		<thead>
+			<th>S.No</th>
+			<th>Date</th>
+			<th>Max Hour Per/Day</th>
+			<th>Line Count</th>
+			<th>Page Count</th>
+		</thead>
+		
+		<% if !@daywise.empty? %>
+			<tbody style="max-height: 150px;">
+				<% s = 1 %>
+				<% @daywise.each do |d| %>
+					<tr>
+						<td class="aligncen"><%= s %></td>
+						<td class="aligncen"><%= d.date.strftime('%d-%m-%Y') %></td>
+						<% @gettime = LoginMaster.find_by(log_date: d.date, empid: @user.empid)
+							t1 = @gettime.login_time
+							t2 = @gettime.logout_time
+							t = t2 - t1
+						%>
+						<td class="aligncen"><%= Time.at(t).utc.strftime("%H:%M:%S") %></td>
+						<td class="aligncen"><%= d.line_count %></td>
+						<td class="aligncen"><%= d.page_count %></td>
+					</tr>
+					<% s += 1 %>
+				<% end %>
+			</tbody>
+		<% else %>
+			<tbody>
+				<tr style="color:#E25336;height:180px;">
+					<td colspan="5" class="aligncen">
+						<b><i class="fa fa-warning" style="color:#E25336;"></i>&emsp;No Records found!</b>
+					</td>
+				</tr>
+			</tbody>
+		<% end %>	
+	</table>
+</div>

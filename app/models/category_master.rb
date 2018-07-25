@@ -1,0 +1,2 @@
+class CategoryMaster < ApplicationRecord
+end
